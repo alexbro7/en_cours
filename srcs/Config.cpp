@@ -42,11 +42,6 @@ Server& Server::operator=(const Server &src)
     return *this;
 }
 
-bool    Server::operator==(const Server &c) const
-{
-    return (cgi == c.cgi && id == c.id && ip == c.ip && host == c.host && port == c.port && root == c.root && index == c.index && error_page == c.error_page && client_body_buffer_size == c.client_body_buffer_size && autoindex == c.autoindex && valid == c.valid && methods[0] == c.methods[0] && methods[1] == c.methods[1] && methods[2] == c.methods[2] && alias == c.alias && lvl == c.lvl && path == c.path && loc == c.loc && client == c.client);
-}
-
 // CONFIG
 Config::Config() : valid(0), _debug(0) {}
 
@@ -58,8 +53,6 @@ Config::~Config() {}
 
 Config& Config::operator=(const Config &src)
 {
-    if (*this == src)
-        return *this;
     if (server.size())
         server.clear();
     server = src.server;
@@ -475,9 +468,6 @@ bool    Config::get_conf(const std::string s)
     valid = 1;
     return 0;
 }
-
-bool	Config::operator==(const Config& c) const
-    { return (server == c.server && valid == c.valid); }
 
 std::ostream&	operator<<(std::ostream& ostream, const Server& src)
 {

@@ -49,7 +49,6 @@ class Config
     ~Config();
 
     Config& operator=(const Config &src);
-    bool	  operator==(const Config &c) const;
     bool    init(const std::string filename);    
     bool    get_debug() const {return _debug;}
     void    set_debug() {std::cout << YELLOW << "--debug" << RESET; _debug = 1;}
